@@ -1,89 +1,51 @@
-const API_URL =
-'https://jsonplaceholder.typicode.com/todos/1';
+function saveLuckyNumbers() {
 
-async function loadData(){
-
-    const res = await fetch(API_URL);
-
-    const data = await res.json();
-
-    displayHot4(data.hot4);
-    displayHot10(data.hot10);
-    displayCold10(data.cold10);
-    displayTickets(data);
-}
-
-function displayHot4(numbers){
-
-    const div =
-        document.getElementById('hot4');
-
-    div.innerHTML = '';
-
-    numbers.forEach(item=>{
-
-        const ball =
-            document.createElement('div');
-
-        ball.className='ball';
-
-        ball.textContent=item.number;
-
-        div.appendChild(ball);
-    });
-}
-
-function displayHot10(numbers){
-
-    document.getElementById('hot10').innerHTML =
-        numbers.map(n =>
-            `${n.number} (${n.count})`
-        ).join('<br>');
-}
-
-function displayCold10(numbers){
-
-    document.getElementById('cold10').innerHTML =
-        numbers.map(n =>
-            `${n.number} (${n.count})`
-        ).join('<br>');
-}
-
-function displayTickets(data){
-
-    const container =
-        document.getElementById('tickets');
-
-    container.innerHTML='';
-
-    data.tickets.forEach((ticket,index)=>{
-
-        const div =
-            document.createElement('div');
-
-        div.className='ticket';
-
-        div.innerHTML=
-            `<strong>#${index+1}</strong><br>
-            ${ticket.join(' - ')}`;
-
-        container.appendChild(div);
-    });
-}
-
-function saveLuckyNumbers(){
+    const nums =
+        document.getElementById(
+            "luckyNumbers"
+        ).value;
 
     localStorage.setItem(
-        'luckyNumbers',
-        document.getElementById('luckyNumbers').value
+        "luckyNumbers",
+        nums
     );
 
-    alert('Saved!');
+    alert("Lucky numbers saved!");
 }
 
-if('serviceWorker' in navigator){
+function loadData() {
+
+    document.getElementById("hot4").innerHTML = `
+        <div class="ball">8</div>
+        <div class="ball">20</div>
+        <div class="ball">33</div>
+        <div class="ball">47</div>
+    `;
+
+    document.getElementById("hot10").innerHTML =
+        "8, 20, 33, 47, 11, 24, 28, 31, 42, 44";
+
+    document.getElementById("cold10").innerHTML =
+        "2, 5, 12, 15, 17, 19, 26, 35, 39, 50";
+
+    document.getElementById("tickets").innerHTML = `
+        <div class="ticket">
+            8 - 20 - 33 - 47 - 11 - 28 - 42
+        </div>
+
+        <div class="ticket">
+            8 - 20 - 33 - 47 - 4 - 18 - 51
+        </div>
+
+        <div class="ticket">
+            8 - 20 - 33 - 47 - 9 - 22 - 44
+        </div>
+    `;
+}
+
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(
-        '/service-worker.js'
+        '/lotto-max-analyzer/service-worker.js'
     );
 }
 

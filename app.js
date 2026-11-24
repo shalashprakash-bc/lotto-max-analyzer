@@ -1,5 +1,3 @@
-alert("app.js loaded");
-
 function saveLuckyNumbers() {
 
     const nums =

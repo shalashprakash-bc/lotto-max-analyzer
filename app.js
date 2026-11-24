@@ -1,5 +1,5 @@
 const API_URL =
-'https://YOUR-WORKER.workers.dev';
+'https://jsonplaceholder.typicode.com/todos/1';
 
 async function loadData(){
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lotto Max Analyzer</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+
+<meta name="theme-color" content="#0f172a">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🍀 Lotto Max Analyzer</h1>
+
+    <div class="card">
+        <h2>Top 4 Hot Numbers</h2>
+        <div id="hot4" class="numbers"></div>
+    </div>
+
+    <div class="card">
+        <h2>Top 10 Hot Numbers</h2>
+        <div id="hot10"></div>
+    </div>
+
+    <div class="card">
+        <h2>Top 10 Cold Numbers</h2>
+        <div id="cold10"></div>
+    </div>
+
+    <div class="card">
+        <h2>My Lucky Numbers</h2>
+
+        <input id="luckyNumbers"
+            placeholder="Example: 7,18,29">
+
+        <button onclick="saveLuckyNumbers()">
+            Save Lucky Numbers
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Suggested Tickets</h2>
+
+        <div id="tickets"></div>
+
+        <button onclick="loadData()">
+            Refresh Analysis
+        </button>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
